@@ -56,6 +56,10 @@ export default defineComponent({
 
     const ageSort = computed(() => data.filter((obj) => obj.age > 30));
 
+    const peopleSort = computed(() =>
+      data.filter((obj) => obj.gender === 'female' && obj.eyeColor === 'brown')
+    );
+
     const data = [
       {
         id: '6188e9e08034c1c3e3727553',
