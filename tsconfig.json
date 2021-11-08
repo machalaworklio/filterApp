@@ -12,7 +12,8 @@
     "sourceMap": true,
     "strict": true,
     "target": "esnext",
-    "types": ["webpack-env"]
+    "types": ["webpack-env"],
+    "resolveJsonModule": true
   },
   "include": [
     "src/**/*.ts",

@@ -18,11 +18,13 @@
 
 <script lang="ts">
 import { ref, computed, defineComponent } from 'vue';
+import people from './data/people.json';
+import { Person } from './data/peopleInterface.js';
 
 export default defineComponent({
   name: 'App',
   setup() {
-    const data = ref<peopleInterface>(people);
+    const data = ref<Person[]>(people);
 
     const balanceSort = computed(() =>
       data.value.filter((obj) => obj.balance >= 3000)
@@ -35,23 +37,21 @@ export default defineComponent({
         (obj) => obj.gender === 'female' && obj.eyeColor === 'brown'
       )
     );
+    const mapped = data.value.map((obj) => {
+      return {
+        firstName: obj.name.split(' ')[0],
+        lastName: obj.name.split(' ')[1],
+        friends: obj.friends.length,
+        domain: obj.email.split('@')[1],
+      };
+    });
 
-    const splitName = data.value.map((obj) => obj.name.split(' '));
-
-    const splitSurname = data.value.map((obj) => obj.name.split(' '));
-
-    const splitFriends = data.value.map((obj) => obj.friends.lenght);
-
-    const splitMail = data.value.map((obj) => obj.email.split('@'));
-
-    const dataSplit = [
-      {
-        firstName: splitName[0],
-        lastName: splitSurname[1],
-        friends: splitFriends,
-        domain: splitMail,
-      },
-    ];
+    const mappedTwo = data.value.map((obj) => {
+      return [
+        obj.name.split(' ')[1],
+        obj.name.split(' ')[0] + ' ' + '(' + obj.age + ')'
+      ];
+    });
   },
 });
 </script>

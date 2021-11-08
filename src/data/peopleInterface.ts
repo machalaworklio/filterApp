@@ -1,4 +1,4 @@
-interface Person {
+export interface Person {
   id: string;
   index: number;
   guid: string;
