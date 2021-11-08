@@ -54,6 +54,8 @@ export default defineComponent({
       data.filter((obj) => obj.balance >= 3000)
     );
 
+    const ageSort = computed(() => data.filter((obj) => obj.age > 30));
+
     const data = [
       {
         id: '6188e9e08034c1c3e3727553',
